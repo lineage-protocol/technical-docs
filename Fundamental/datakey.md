@@ -8,6 +8,22 @@ In the context of Lineage Protocol, the datakey provides a unique identifier for
 
 Overall, using a deterministic hash function to generate the datakey is a key component of Lineage Protocol, providing a secure and reliable way to manage and verify NFT metadata.
 
+### Format
+
+Datakey used in the Lineage node is a deterministic cryptographic hash based on the SHA256 algorithm. It is created by hashing together four pieces of information: the NFT address, the NFT token ID, the chain ID, and a nonce
+
+Formula
+
+```
+datakey = sha256(NFT address + NFT token id + chain id + nonce)
+```
+
+Result
+
+```
+f5e5b12134d36778ac2e0328a4677f14ef59e965631d03dedce355182a012525
+```
+
 ### Write
 
 To add or update metadata for an NFT, they use their private key to sign a message containing the new metadata, along with the datakey of the NFT. This message is then broadcast to the Lineage network, where it is processed by the appropriate services (such as the DHT service and IPFS DAG service) to update the metadata associated with that datakey.
